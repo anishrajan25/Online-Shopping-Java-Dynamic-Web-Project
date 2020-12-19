@@ -15,40 +15,40 @@ public ParentRecordProduct(String name, String id, String merchant, String descr
 String Name,Id,merchant,Description;
 int Price;
 Part image;
-protected String getName() {
+public String getName() {
 	return Name;
 }
-protected void setName(String name) {
+public void setName(String name) {
 	Name = name;
 }
-protected String getId() {
+public String getId() {
 	return Id;
 }
-protected void setId(String id) {
+public void setId(String id) {
 	Id = id;
 }
-protected String getMerchant() {
+public String getMerchant() {
 	return merchant;
 }
-protected void setMerchant(String merchant) {
+public void setMerchant(String merchant) {
 	this.merchant = merchant;
 }
-protected String getDescription() {
+public String getDescription() {
 	return Description;
 }
-protected void setDescription(String description) {
+public void setDescription(String description) {
 	Description = description;
 }
-protected int getPrice() {
+public int getPrice() {
 	return Price;
 }
-protected void setPrice(int price) {
+public void setPrice(int price) {
 	Price = price;
 }
-protected Part getImage() {
+public Part getImage() {
 	return image;
 }
-protected void setImage(Part image) {
+public void setImage(Part image) {
 	this.image = image;
 }
 
