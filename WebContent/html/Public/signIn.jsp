@@ -26,15 +26,15 @@
 								<input id="tab-2" type="radio" name="tab" class="sign-up">
 								<label for="tab-2" class="tab">Sign Up</label>
 								<div class="login-space">
-									<form action="/Online_Shopping_Web/SignUp" method="post">
+									<form action="/Online_Shopping_Web/SignIn" method="post">
 										<div class="login">
 											<div class="group"> 
 												<label for="user" class="label">E-Mail</label> 
-												<input id="user" type="email" class="input" name="" placeholder="Enter your E-Mail" > 
+												<input id="user" type="email" class="input" name="Email" placeholder="Enter your E-Mail" required > 
 											</div>
 											<div class="group"> 
 												<label for="pass" class="label">Password</label> 
-												<input id="pass" type="password" class="input" name="" data-type="password" placeholder="Enter your password" > 
+												<input id="pass" type="password" class="input" name="Passwd" data-type="password" placeholder="Enter your password" required> 
 											</div>
 											<div class="group"> 
 												<input type="submit" class="button" value="Sign In"> 
