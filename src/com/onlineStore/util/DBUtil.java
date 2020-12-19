@@ -13,7 +13,7 @@ public class DBUtil {
 		 if(con==null)
 		 {
 		 try {
-				Class.forName("oracle.jdbc.driver.OracleDriver");
+			 Class.forName("oracle.jdbc.driver.OracleDriver");
 				con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","demodbjava","parteek@1234");
 			} 
 			catch (Exception e) {
