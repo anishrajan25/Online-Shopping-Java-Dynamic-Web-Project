@@ -18,50 +18,50 @@ public class ParentRecordProfile {
 String FirstName,LastName,Email,Password,Address;
 int Status;
 long Phoneno;
-protected void setFirstName(String firstName) {
+public void setFirstName(String firstName) {
 	FirstName = firstName;
 }
-protected String getFirstName() {
+public String getFirstName() {
 	return FirstName;
 }
-protected void setLastName(String lastName) {
+public void setLastName(String lastName) {
 	LastName = lastName;
 }
-protected String getLastName() {
+public String getLastName() {
 	return LastName;
 }
-protected void setEmail(String email) {
+public void setEmail(String email) {
 	Email = email;
 }
-protected String getEmail() {
+public String getEmail() {
 	return Email;
 }
-protected void setPassword(String password) {
+public void setPassword(String password) {
 	Password = password;
 }
-protected String getPassword() {
+public String getPassword() {
 	return Password;
 }
-protected void setAddress(String address) {
+public void setAddress(String address) {
 	Address = address;
 }
-protected String getAddress() {
+public String getAddress() {
 	return Address;
 }
-protected void setStatus(int status) {
+public void setStatus(int status) {
 	Status = status;
 }
-protected int getStatus() {
+public int getStatus() {
 	return Status;
 }
-protected void setPhoneno(long phoneno) {
+public void setPhoneno(long phoneno) {
 	Phoneno = phoneno;
 }
-protected long getPhoneno() {
+public long getPhoneno() {
 	return Phoneno;
 }
 
-protected String GeneratePassword()
+public String GeneratePassword()
 {
 	StringBuilder sb=new StringBuilder();
 	for(int i=0;i<13;i++)
