@@ -21,19 +21,19 @@ public class Merchant extends ParentRecordProfile{
 //			
 //		}
 
-		private long getAadharNumber() {
+		public long getAadharNumber() {
 			return AadharNumber;
 		}
 
-		private Part getImage() {
+		public Part getImage() {
 			return image;
 		}
 
-		private void setAadharNumber(long aadharNumber) {
+		public void setAadharNumber(long aadharNumber) {
 			AadharNumber = aadharNumber;
 		}
 
-		private void setImage(Part image) {
+		public void setImage(Part image) {
 			this.image = image;
 		}
 }

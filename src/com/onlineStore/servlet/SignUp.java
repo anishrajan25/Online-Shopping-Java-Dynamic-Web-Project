@@ -2,18 +2,22 @@ package com.onlineStore.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.onlineStore.bean.Consumer;
+import com.onlineStore.bean.Merchant;
 import com.onlineStore.service.ConsumerOperations;
+import com.onlineStore.service.MerchantOperations;
 
 /**
  * Servlet implementation class SignUp
  */
 @WebServlet("/SignUp")
+@MultipartConfig
 public class SignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,6 +50,14 @@ public class SignUp extends HttpServlet {
 		ConsumerOperations conope=new ConsumerOperations();
 		conope.addConsumer(consumer);
 		//System.out.println(request.getParameter("FirstName")+" "+request.getParameter("LastName")+" "+request.getParameter("MobileNumber")+" "+request.getParameter("Address")+" "+request.getParameter("Email")+" "+request.getParameter("Passwd")+" "+request.getParameter("status"));
+	}
+	else
+	{
+		System.out.println(request.getParameter("FirstName")+" "+request.getParameter("LastName")+" "+request.getParameter("MobileNumber")+" "+request.getParameter("Address")+" "+request.getParameter("Email")+" "+request.getParameter("Passwd")+" "+request.getParameter("status")+" "+request.getParameter("AadharNumber"));
+	Merchant merchant=new Merchant(request.getParameter("FirstName"),request.getParameter("LastName"),request.getParameter("Email"),request.getParameter("Passwd"),request.getParameter("Address"),Integer.valueOf(request.getParameter("status")),Long.valueOf(request.getParameter("MobileNumber")),Long.valueOf(request.getParameter("AadharNumber")),request.getPart("picture"));
+	System.out.println("merchant object created");
+	MerchantOperations merop=new MerchantOperations();
+	merop.addMerchant(merchant);
 	}
 	}
 

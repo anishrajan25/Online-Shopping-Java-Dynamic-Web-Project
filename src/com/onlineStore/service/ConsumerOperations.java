@@ -10,5 +10,4 @@ public boolean addConsumer(Consumer consumer)
 	DataBaseAdd db=new DataBaseAdd();
 	return db.AddConsumer(consumer);
 }
-
 }

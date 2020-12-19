@@ -11,7 +11,7 @@ public class DBUtil {
 	 
 	 public static Connection getConnection()
 	 {
-		 System.out.println(con==null);
+//		 System.out.println(con==null);
 		 if(con==null)
 		 {
 		 try {
@@ -25,7 +25,7 @@ public class DBUtil {
 			} 
 		 }
 		 System.out.println("done");
-		 System.out.println(con==null);
+//		 System.out.println(con==null);
 			return con;
 	 }
 }
