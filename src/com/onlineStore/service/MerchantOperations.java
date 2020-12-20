@@ -2,6 +2,7 @@ package com.onlineStore.service;
 
 import com.onlineStore.bean.Merchant;
 import com.onlineStore.dao.DataBaseAdd;
+import com.onlineStore.dao.DataBaseVerify;
 
 public class MerchantOperations {
 	public boolean addMerchant(Merchant merchant)
@@ -10,4 +11,10 @@ public class MerchantOperations {
 		DataBaseAdd db=new DataBaseAdd();
 		return db.addMerchant(merchant);
 	}
+	public boolean verifyMerchant(String email,String Password)
+	{
+		DataBaseVerify db=new DataBaseVerify();
+		return db.verifyMerchant(email, Password);
+	}
+	
 }
