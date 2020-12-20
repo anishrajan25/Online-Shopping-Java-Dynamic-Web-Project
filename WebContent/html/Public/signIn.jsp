@@ -14,10 +14,12 @@
 		<title>Sign In</title>
 	</head>
 
-	<body class="text-center">
-		<div class="container">
+	<body>
+		<%@ include file="header.jsp" %>
+		<div class="container text-center">
 			<div class="row">
-				<div class="col-md-6 mx-auto p-0">
+				<div class="col-md-2" ></div>
+				<div class="col-md-7">
 					<div class="card">
 						<div class="login-box">
 							<div class="login-snip"> 
@@ -70,10 +72,6 @@
 											<div class="group"> 
 												<input id="next" type="button" class="button" value="Next"> 
 											</div>
-											<div class="hr"></div>
-											<div class="foot"> 
-												<label for="tab-1">Already Member?</label> 
-											</div>
 										</div>
 										<div class="sign-up-form" id="2">
 											<div class="group"> 
@@ -96,10 +94,6 @@
 											<div class="group"> 
 												<input id="merchant" type="button" class="button" value="Sign Up as Merchant -> "> 
 											</div>
-											<div class="hr"></div>
-											<div class="foot"> 
-												<label for="tab-1">Already Member?</label> 
-											</div>
 										</div>
 										<div class="sign-up-form" id="3">
 											<div class="group"> 
@@ -116,10 +110,6 @@
 											<div class="group"> 
 												<input id="merchantSubmit" type="submit" class="button" value="Sign Up as Merchant"> 
 											</div>
-											<div class="hr"></div>
-											<div class="foot"> 
-												<label for="tab-1">Already Member?</label> 
-											</div>
 										</div>
 									</form>
 								</div>
@@ -127,8 +117,10 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-md-3" ></div>
 			</div>
 		</div>
+		<%@ include file="footer.jsp" %>
 	</body>
   <script type="text/javascript">
   	$(document).ready(function() {

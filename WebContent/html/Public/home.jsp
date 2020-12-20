@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Welcome <%= session.getAttribute("name") %> </h1>
+    <%@ include file="header.jsp" %>
+    <h1>Welcome <%= name %> </h1>
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
