@@ -1,9 +1,6 @@
 package com.onlineStore.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class SignIn
+ * Servlet implementation class Logout
  */
-@WebServlet("/SignIn")
-public class SignIn extends HttpServlet {
+@WebServlet("/Logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SignIn() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +29,10 @@ public class SignIn extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession();
+		session.removeAttribute("name");
+		session.removeAttribute("type");
+		response.sendRedirect("html/Public/home.jsp");
 	}
 
 	/**
@@ -40,28 +41,6 @@ public class SignIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
-		HttpSession session = request.getSession();
-		String email = request.getParameter("Email"), pass = request.getParameter("Passwd");
-		if(email.equals("abc@xyz.com")) {
-			if(pass.equals("java")) {
-				session.setAttribute("type", "consumer");
-				session.setAttribute("name", "Consumer");
-			}
-			else if(pass.equals("jsp")) {
-				session.setAttribute("type", "merchant");
-				session.setAttribute("name", "Merchant");
-			}
-			response.sendRedirect("html/Public/home.jsp");
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			System.out.println("was here");
-			out.print("ftghujiok");
-			rd.include(request, response);
-			//response.sendRedirect("html/Public/signIn.jsp");
-		}
 	}
 
 }
