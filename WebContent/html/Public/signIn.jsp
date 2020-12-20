@@ -45,7 +45,7 @@
 											</div> -->
 										</div>
 									</form>
-									<form action="/Online_Shopping_Web/SignUp" method="post">
+									<form action="/Online_Shopping_Web/SignUp" enctype="multipart/form-data" method="post">
 										<div class="sign-up-form" id="1">
 											<div class="group"> 
 												<label for="firstname" class="label">Firstname</label> 
@@ -88,7 +88,7 @@
 												<textarea style="resize: none;" rows="5" cols="30" maxlength="60" name="Address" id="inputAddress" class="input" placeholder="Address" ></textarea> 
 											</div>
 											<div class="group"> 
-												<input id="hidden" type="hidden" value="3"> 
+												<input id="hidden" type="hidden" name="status" value="3"> 
 											</div>
 											<div class="group"> 
 												<input id="customer" type="submit" class="button" value="Sign Up as Customer"> 
@@ -114,7 +114,7 @@
 												<input type="file" name="picture" id="inputPic" class="input" >
 											</div>
 											<div class="group"> 
-												<input id="merchant" type="submit" class="button" value="Sign Up as Merchant"> 
+												<input id="merchantSubmit" type="submit" class="button" value="Sign Up as Merchant"> 
 											</div>
 											<div class="hr"></div>
 											<div class="foot"> 

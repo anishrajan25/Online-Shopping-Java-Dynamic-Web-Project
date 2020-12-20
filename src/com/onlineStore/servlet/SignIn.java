@@ -47,15 +47,13 @@ public class SignIn extends HttpServlet {
 			response.sendRedirect("html/Public/home.jsp");
 		}
 		else {
-//			RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
-//			response.setContentType("text/html");
-//			PrintWriter out = response.getWriter();
-//			System.out.println("was here");
-//			out.print("<script>$(document).ready(function() {"
-//					+ "  		alert(\"Please check your E-Mail or Password\");"
-//					+ "}<script>");
-//			rd.include(request, response);
-			response.sendRedirect("html/Public/signIn.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+			System.out.println("was here");
+			out.print("ftghujiok");
+			rd.include(request, response);
+			//response.sendRedirect("html/Public/signIn.jsp");
 		}
 	}
 
