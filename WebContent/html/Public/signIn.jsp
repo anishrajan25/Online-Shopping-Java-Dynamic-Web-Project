@@ -114,7 +114,7 @@
 												<input type="file" name="picture" id="inputPic" class="input" >
 											</div>
 											<div class="group"> 
-												<input id="" type="submit" class="button" value="Sign Up as Merchant"> 
+												<input id="merchantSubmit" type="submit" class="button" value="Sign Up as Merchant"> 
 											</div>
 											<div class="hr"></div>
 											<div class="foot"> 
