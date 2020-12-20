@@ -49,27 +49,35 @@ public class SignIn extends HttpServlet {
 			if(pass.equals("java")) {
 				session.setAttribute("type", "consumer");
 				session.setAttribute("name", "Consumer");
+				response.sendRedirect("html/Public/home.jsp");
 			}
 			else if(pass.equals("jsp")) {
 				session.setAttribute("type", "merchant");
 				session.setAttribute("name", "Merchant");
+				response.sendRedirect("html/Public/home.jsp");
+			}
+			else {
+				response.sendRedirect("html/Public/signIn.jsp");
 			}
 		}
-		ConsumerOperations conope=new ConsumerOperations();
-		MerchantOperations merope=new MerchantOperations();
-		if( (email.equals("abc@xyz.com") && pass.equals("java")) || conope.verifyConsumer(email,pass) || merope.verifyMerchant(email,pass)) {
-			session.setAttribute("name", "Developer");
-			response.sendRedirect("html/Public/home.jsp");
-		}
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
-//			response.setContentType("text/html");
-//			PrintWriter out = response.getWriter();
-//			System.out.println("was here");
-//			out.print("ftghujiok");
-//			rd.include(request, response);
-			response.sendRedirect("html/Public/signIn.jsp");
+			ConsumerOperations conope=new ConsumerOperations();
+			MerchantOperations merope=new MerchantOperations();
+			if(conope.verifyConsumer(email,pass) || merope.verifyMerchant(email,pass)) {
+				session.setAttribute("name", "Developer");
+				response.sendRedirect("html/Public/home.jsp");
+			}
+			else {
+//				RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
+//				response.setContentType("text/html");
+//				PrintWriter out = response.getWriter();
+//				System.out.println("was here");
+//				out.print("ftghujiok");
+//				rd.include(request, response);
+				response.sendRedirect("html/Public/signIn.jsp");
+			}
 		}
+		
 	}
 
 }
