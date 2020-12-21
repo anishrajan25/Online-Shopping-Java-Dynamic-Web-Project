@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/Online_Shopping_Web/html/Public/home.jsp">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -61,10 +61,10 @@
 	                        <%= name %>
 	                    </a>
 	                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    		<a class="dropdown-item" href="#">My Account</a>
+                    		<a class="dropdown-item" href="/Online_Shopping_Web/MyAccount">My Account</a>
                             <a class="dropdown-item" href="#">Settings</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="/Online_Shopping_Web/Logout">Logout</a>
                         </div>
                 	</li>
                 <% } %>
