@@ -63,8 +63,16 @@ public class SignIn extends HttpServlet {
 		else {
 			ConsumerOperations conope=new ConsumerOperations();
 			MerchantOperations merope=new MerchantOperations();
-			if(conope.verifyConsumer(email,pass) || merope.verifyMerchant(email,pass)) {
-				session.setAttribute("name", "Developer");
+			if(conope.verifyConsumer(email,pass))
+			{
+				session.setAttribute("type", "consumer");
+				session.setAttribute("name", "Consumer");
+				response.sendRedirect("html/Public/home.jsp");
+			}
+			else if(merope.verifyMerchant(email,pass))
+			{
+				session.setAttribute("type", "merchant");
+				session.setAttribute("name", "Merchant");
 				response.sendRedirect("html/Public/home.jsp");
 			}
 			else {

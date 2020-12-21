@@ -62,13 +62,14 @@ public boolean addProduct(Product product)
 	try
 	{
 		System.out.println("Entered");
-		PreparedStatement ps=con.prepareStatement("INSERT INTO PRODUCT_FOR_SHOPPINGPROJECT VALUES(?,?,?,?,?,?)");
+		PreparedStatement ps=con.prepareStatement("INSERT INTO PRODUCT_FOR_SHOPPINGPROJECT VALUES(?,?,?,?,?,?,?)");
 		ps.setString(1,product.getName());
 		ps.setString(2,product.getId());
 		ps.setString(3,product.getMerchant());
 		ps.setString(4, product.getDescription());
 		ps.setInt(5, product.getPrice());;
 		ps.setBinaryStream(6,(product.getImage()).getInputStream(), (product.getImage()).getSize());
+		ps.setInt(7, product.getQuantity());
 		ps.execute();
 		System.out.println("Product Added");
 	}
