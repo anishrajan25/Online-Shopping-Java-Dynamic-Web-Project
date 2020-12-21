@@ -14,6 +14,7 @@ public ParentRecordProduct(String name, String id, String merchant, String descr
 	}
 String Name,Id,merchant,Description;
 int Price;
+
 Part image;
 public String getName() {
 	return Name;

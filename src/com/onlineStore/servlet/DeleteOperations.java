@@ -2,27 +2,24 @@ package com.onlineStore.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.onlineStore.bean.Product;
 import com.onlineStore.service.ProductOperations;
 
 /**
- * Servlet implementation class ProductAdd
+ * Servlet implementation class DeleteOperations
  */
-@WebServlet("/ProductAdd")
-@MultipartConfig
-public class ProductAdd extends HttpServlet {
+@WebServlet("/DeleteOperations")
+public class DeleteOperations extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductAdd() {
+    public DeleteOperations() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,19 +36,13 @@ public class ProductAdd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-			if(request.getParameter("ProductName")!=null)
-			{
-				Product product=new Product(request.getParameter("ProductName"),request.getParameter("ProductId"),request.getParameter("MerchantName"),request.getParameter("ProductDescription"),Integer.valueOf(request.getParameter("ProductPrice")),request.getPart("ProductImage"),Integer.valueOf(request.getParameter("ProductQuantity")));
-				System.out.println("Product Object Created");
-				ProductOperations proope=new ProductOperations();
-				proope.addProduct(product);
-				System.out.println(request.getParameter("ProductName")+" "+request.getParameter("ProductId")+" "+request.getParameter("MerchantName")+" "+request.getParameter("ProductDescription")+" "+request.getParameter("ProductPrice"));
-			}
-			else
-			{
-				
-			}
+		if(request.getParameter("ProductId")!=null)
+		{
+			ProductOperations proope=new ProductOperations();
+			System.out.println("Going to be deleted");
+			proope.deleteProduct(request.getParameter("ProductId"),Integer.valueOf(request.getParameter("ProductQuantity")));
 		}
+		
+	}
 
 }
