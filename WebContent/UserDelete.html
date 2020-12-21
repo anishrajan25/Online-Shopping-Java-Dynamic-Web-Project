@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form action="DeleteOperations" method="post">
 <label >UserId</label>
 <input type="text" name="UserId"><br>
 <label>UserType</label>
@@ -13,6 +13,8 @@
   <option value="2">Merchant</option>
   <option value="3">Consumer</option>
 </select>
+<input type="hidden" name="task" value="Deletion of User">
+<input type="submit" value="Delete">
 </form>
 </body>
 </html>

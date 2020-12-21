@@ -7,21 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.onlineStore.service.ConsumerOperations;
-import com.onlineStore.service.MerchantOperations;
 import com.onlineStore.service.ProductOperations;
 
 /**
- * Servlet implementation class DeleteOperations
+ * Servlet implementation class UpdateOperations
  */
-@WebServlet("/DeleteOperations")
-public class DeleteOperations extends HttpServlet {
+@WebServlet("/UpdateOperations")
+public class UpdateOperations extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteOperations() {
+    public UpdateOperations() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,26 +36,11 @@ public class DeleteOperations extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("task").equals("Deletion of Product"))
+		if(request.getParameter("ProductId")!=null)
 		{
 			ProductOperations proope=new ProductOperations();
 			System.out.println("Going to be deleted");
-			proope.deleteProduct(request.getParameter("ProductId"));
-		}
-		else if(request.getParameter("task").equals("Deletion of User"))
-		{
-			if(request.getParameter("UserType").equals("2"))
-			{
-				MerchantOperations merope=new MerchantOperations();
-				merope.deleteMerchant(request.getParameter("UserId"));
-			}
-			else
-			{
-				ConsumerOperations conope=new ConsumerOperations();
-				conope.deleteConsumer(request.getParameter("UserId"));
-			}
-			System.out.println(request.getParameter("UserId")+" "+request.getParameter("UserType"));
-			
+			proope.updateProduct(request.getParameter("ProductId"),Integer.valueOf(request.getParameter("ProductQuantity")));
 		}
 		
 	}

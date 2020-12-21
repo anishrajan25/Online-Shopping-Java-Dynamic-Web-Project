@@ -3,43 +3,71 @@ package com.onlineStore.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.onlineStore.util.DBUtil;
 
 public class DataBaseDelete {
-Connection con=DBUtil.getConnection();
-public boolean deleteProduct(String Id,int Quantity)
-{
-	try
+	Connection con=DBUtil.getConnection();
+	
+	public boolean deleteProduct(String id)
 	{
-		PreparedStatement ps=con.prepareStatement("SELECT PRODUCTQUANTITY FROM PRODUCT_FOR_SHOPPINGPROJECT WHERE PRODUCTID=?");
-		ps.setString(1,Id);
-		ResultSet rs=ps.executeQuery();
-		int t=0;
-		while(rs.next())
+		int count=0;
+		PreparedStatement ps;
+		try 
 		{
-			t=rs.getInt(1);
+			ps = con.prepareStatement("DELETE FROM  PRODUCT_FOR_SHOPPINGPROJECT WHERE PRODUCTID=?");
+			ps.setString(1, id);
+			ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE PRODUCTID=?");
+			ps.setString(1,id);
+			count=ps.executeUpdate();
+		} 
+		catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if(t<Quantity)
+		return count>0;
+		
+	}
+	public boolean deleteConsumer(String id)
+	{
+		int count=0;
+		try
 		{
-			System.out.println("Less Quantity");
-		}
-		else 
-		{
-			int req=t-Quantity;
-			System.out.println("before Sql Execution");
-			ps=con.prepareStatement("UPDATE  PRODUCT_FOR_SHOPPINGPROJECT SET PRODUCTQUANTITY=? WHERE PRODUCTID=?");
-			System.out.println(req);
-			ps.setLong(1,req);
-			ps.setString(2, Id);
+			PreparedStatement ps=con.prepareStatement("DELETE FROM  CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
+			ps.setString(1, id);
+			count=ps.executeUpdate();
+			ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=?");
+			ps.setString(1,id);
 			ps.executeUpdate();
+			
 		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return count>0;
 	}
-	catch(Exception e)
+	public boolean deleteMerchant(String id)
 	{
-		System.out.println(e);
-		return false;
+		int count=0;
+		try
+		{
+			PreparedStatement ps=con.prepareStatement("DELETE FROM  SELLER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
+			ps.setString(1, id);
+			count=ps.executeUpdate();
+			ps=con.prepareStatement("DELETE FROM  PRODUCT_FOR_SHOPPINGPROJECT WHERE SELLERUSERNAME=?");
+			ps.setString(1,id);
+			ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE SELLERUSERNAME=?");
+			ps.setString(1,id);
+			ps.executeUpdate();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return count>0;
 	}
-	return true;
-}
 }
