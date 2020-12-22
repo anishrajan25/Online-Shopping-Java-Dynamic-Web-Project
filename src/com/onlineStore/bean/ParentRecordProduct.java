@@ -12,6 +12,9 @@ public ParentRecordProduct(String name, String id, String merchant, String descr
 		Price = price;
 		this.image = image;
 	}
+public ParentRecordProduct() {
+	// TODO Auto-generated constructor stub
+}
 String Name,Id,merchant,Description;
 int Price;
 

@@ -10,6 +10,11 @@ public class Product extends ParentRecordProduct{
 		this.Quantity=quantity;
 	}
 	
+	public Product() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
 	public int getQuantity() {
 		return Quantity;
 	}
