@@ -70,4 +70,20 @@ public class DataBaseDelete {
 		}
 		return count>0;
 	}
+	public boolean deleteFromCart(String ConsumerName,String Id)
+	{
+		int count=0;
+		try
+		{
+			PreparedStatement ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=? AND PRODUCTID=?");
+			ps.setString(1,ConsumerName);
+			ps.setString(2, Id);
+			count=ps.executeUpdate();	
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return count>0;
+	}
 }
