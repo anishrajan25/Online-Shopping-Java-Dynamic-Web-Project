@@ -59,6 +59,11 @@ public class DeleteOperations extends HttpServlet {
 			System.out.println(request.getParameter("UserId")+" "+request.getParameter("UserType"));
 			
 		}
+		else if(request.getParameter("task").equals("Deletion From Cart"))
+		{
+			ProductOperations proope=new ProductOperations();
+			proope.deleteFromCart(request.getParameter("customername"),request.getParameter("id"));
+		}
 		
 	}
 

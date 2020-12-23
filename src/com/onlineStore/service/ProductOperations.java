@@ -24,4 +24,16 @@ public boolean deleteProduct(String Id)
 	DataBaseDelete db=new DataBaseDelete();
 	return db.deleteProduct(Id);
 }
+public boolean addToCart(String ConsumerName,String Id)
+{
+	DataBaseAdd db=new DataBaseAdd();
+	db.addToCart(ConsumerName,Id);
+	return true;
+}
+public boolean deleteFromCart(String ConsumerName,String Id)
+{
+	DataBaseDelete db=new DataBaseDelete();
+	db.deleteFromCart(ConsumerName,Id);
+	return true;
+}
 }
