@@ -38,6 +38,7 @@ public class DeleteOperations extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("entered in post of DeleteOperations");
 		if(request.getParameter("task").equals("Deletion of Product"))
 		{
 			ProductOperations proope=new ProductOperations();
