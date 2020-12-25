@@ -1,3 +1,4 @@
+
 package com.onlineStore.servlet;
 
 import java.io.IOException;
@@ -20,14 +21,14 @@ import com.onlineStore.util.DBUtil;
 /**
  * Servlet implementation class ImageDisplay
  */
-@WebServlet("/ImageDisplay")
-public class ImageDisplay extends HttpServlet {
+@WebServlet("/ProductDisplay")
+public class ProductDisplay extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ImageDisplay() {
+    public ProductDisplay() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,9 +40,7 @@ public class ImageDisplay extends HttpServlet {
 		// TODO Auto-generated method stub
 		Connection con=DBUtil.getConnection();
 		System.out.println("connection established");
-		System.out.println(request.getParameter("task"));
-		if(request.getParameter("task").equals("DisplayProduct"))
-		{
+		System.out.println(request.getParameter("id"));
 			String id=request.getParameter("id");
 			System.out.println(id);
 			PreparedStatement ps;
@@ -70,7 +69,6 @@ public class ImageDisplay extends HttpServlet {
 			}
 			
 		}
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

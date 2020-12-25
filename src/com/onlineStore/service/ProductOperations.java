@@ -27,8 +27,8 @@ public boolean deleteProduct(String Id)
 public boolean addToCart(String ConsumerName,String Id)
 {
 	DataBaseAdd db=new DataBaseAdd();
-	db.addToCart(ConsumerName,Id);
-	return true;
+	System.out.println("addToCart funcion called");
+	return db.addToCart(ConsumerName,Id);
 }
 public boolean deleteFromCart(String ConsumerName,String Id)
 {

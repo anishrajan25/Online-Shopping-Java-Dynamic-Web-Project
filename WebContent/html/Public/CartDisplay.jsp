@@ -22,7 +22,7 @@
 <div id="ProductPage">
     <%@ include file="header.jsp" %>
     <% String username=(String)(request.getSession(false)).getAttribute("consumername"); %>
-    <h1>Product Display Page </h1>
+    <h1>Cart Display Page</h1>
     <%--<%
     response.setContentType("image/jpeg");
     %>--%>
@@ -30,24 +30,29 @@
     Class.forName("oracle.jdbc.driver.OracleDriver");
 	 System.out.println("verified");
 	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","demodbjava","parteek@1234");
-	PreparedStatement ps=con.prepareStatement("SELECT * FROM PRODUCT_FOR_SHOPPINGPROJECT");
+	PreparedStatement ps=con.prepareStatement("SELECT * FROM CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=?");
+	String t=(String) session.getAttribute("consumername");
+	ps.setString(1,t);
 	ResultSet rs=ps.executeQuery();
     %>
     <% while(rs.next()){  %>
     <% System.out.println(1);%>
+    <%  String str=rs.getString(5);%>
     <a href="productDescription.jsp?id=<%= rs.getString(2) %>"><div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url(/Online_Shopping_Web/ProductDisplay?id=<%= rs.getString(2) %>);"></div>
+          <div class="card-custom-img" style="background-image: url(/Online_Shopping_Web/CartDisplay?id=<%= rs.getString(2) %>);"></div>
           <div class="card-custom-avatar">
-            <img class="img-fluid" src="/Online_Shopping_Web/ProductDisplay?id=<%= rs.getString(2) %>" alt="Avatar" />
+            <img class="img-fluid" src="/Online_Shopping_Web/CartDisplay?id=<%= rs.getString(2) %>" alt="Avatar" />
           </div>
+          
           <div class="card-body" style="overflow-y: auto">
             <h4 class="card-title"><%= rs.getString(1) %></h4>
-            <p class="card-text"><%= rs.getString(4) %></p>
+             <p class="card-text"><%= str %></p>
           </div>
           <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary"><%= rs.getInt(5) %></a>
-            <a href="#" class="btn btn-outline-primary"><%= rs.getInt(7) %></a>
+            <a href="#" class="btn btn-primary"><%= rs.getInt(6) %></a>
+             <a href="#" class="btn btn-outline-primary"><%= str %></a>
           </div>
+          <a href="/Online_Shopping_Web/CartDelete?id=<%= rs.getString(2) %>"><button>Delete From the Cart</button></a>
         </div>
         </a>
     

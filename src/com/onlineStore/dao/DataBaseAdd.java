@@ -84,6 +84,7 @@ public boolean addProduct(Product product)
 }
 public boolean addToCart(String ConsumerName,String Id)
 {
+	System.out.println("Add to Cart DataBase");
 	int count=0;
 	try
 	{
@@ -92,6 +93,7 @@ public boolean addToCart(String ConsumerName,String Id)
 		ResultSet rs=ps.executeQuery();
 		if(rs!=null)
 		{
+			System.out.println("rs  entered");
 			count=1;
 			String Productname = null,id = null,merchantname = null,description = null;
 			int price = 0;
@@ -114,6 +116,7 @@ public boolean addToCart(String ConsumerName,String Id)
 			ps.setInt(6, price);
 			ps.setBinaryStream(7, is);
 			ps.executeUpdate();
+			System.out.println("Inserted into the Cart DataBase");
 		}
 	}
 	catch(Exception e)
