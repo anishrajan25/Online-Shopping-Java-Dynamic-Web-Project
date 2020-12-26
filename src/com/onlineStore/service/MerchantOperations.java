@@ -19,6 +19,7 @@ public class MerchantOperations {
 	}
 	public boolean deleteMerchant(String id)
 	{
+		System.out.println("deleteMerchant entered");
 		DataBaseDelete db=new DataBaseDelete();
 		db.deleteMerchant(id);
 		return true;

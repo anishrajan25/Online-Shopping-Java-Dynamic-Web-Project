@@ -57,11 +57,15 @@ public class DataBaseDelete {
 			PreparedStatement ps=con.prepareStatement("DELETE FROM  SELLER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
 			ps.setString(1, id);
 			count=ps.executeUpdate();
+			System.out.println("merchant deleted");
 			ps=con.prepareStatement("DELETE FROM  PRODUCT_FOR_SHOPPINGPROJECT WHERE SELLERUSERNAME=?");
 			ps.setString(1,id);
+			ps.executeUpdate();
+			System.out.println("product deleted");
 			ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE SELLERUSERNAME=?");
 			ps.setString(1,id);
 			ps.executeUpdate();
+			System.out.println("cart deleted");
 			
 		}
 		catch(Exception e)

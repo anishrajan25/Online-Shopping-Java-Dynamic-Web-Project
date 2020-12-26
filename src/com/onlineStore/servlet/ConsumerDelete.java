@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.onlineStore.service.ProductOperations;
+import com.onlineStore.service.ConsumerOperations;
 
 /**
- * Servlet implementation class UpdateOperations
+ * Servlet implementation class ConsumerDelete
  */
-@WebServlet("/UpdateOperations")
-public class UpdateOperations extends HttpServlet {
+@WebServlet("/ConsumerDelete")
+public class ConsumerDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateOperations() {
+    public ConsumerDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,13 +36,9 @@ public class UpdateOperations extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("ProductId")!=null)
-		{
-			ProductOperations proope=new ProductOperations();
-			System.out.println("Going to be deleted");
-			proope.updateProduct(request.getParameter("ProductId"),Integer.valueOf(request.getParameter("ProductQuantity")));
-		}
-		
+		// TODO Auto-generated method stub
+		ConsumerOperations conope=new ConsumerOperations();
+		conope.deleteConsumer(request.getParameter("UserId"));
 	}
 
 }

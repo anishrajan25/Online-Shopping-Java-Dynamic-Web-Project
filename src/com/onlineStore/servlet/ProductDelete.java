@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.onlineStore.service.ProductOperations;
 
 /**
- * Servlet implementation class AdditionOperations
+ * Servlet implementation class ProductDelete
  */
-@WebServlet("/AdditionOperations")
-public class AdditionOperations extends HttpServlet {
+@WebServlet("/ProductDelete")
+public class ProductDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdditionOperations() {
+    public ProductDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,11 +37,9 @@ public class AdditionOperations extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if(request.getParameter("task").equals("Addition to Cart"))
-		{
-			ProductOperations proope=new ProductOperations();
-			proope.addToCart(request.getParameter("customername"),request.getParameter("id"));
-		}
+		ProductOperations proope=new ProductOperations();
+		System.out.println("Going to be deleted");
+		proope.deleteProduct(request.getParameter("ProductId"));
 	}
 
 }
