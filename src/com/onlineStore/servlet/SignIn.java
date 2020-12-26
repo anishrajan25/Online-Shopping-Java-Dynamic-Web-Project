@@ -45,6 +45,7 @@ public class SignIn extends HttpServlet {
 //		doGet(request, response);
 		HttpSession session = request.getSession();
 		String email = request.getParameter("Email"), pass = request.getParameter("Passwd");
+		
 		if(email.equals("abc@xyz.com")) {
 			if(pass.equals("java")) {
 				session.setAttribute("type", "consumer");
@@ -54,7 +55,7 @@ public class SignIn extends HttpServlet {
 			else if(pass.equals("jsp")) {
 				session.setAttribute("type", "merchant");
 				session.setAttribute("merchantname", request.getParameter("Email"));
-				response.sendRedirect("html/Public/home.jsp");
+				response.sendRedirect("html/Merchant/account.jsp");
 			}
 			else {
 				response.sendRedirect("html/Public/signIn.jsp");
@@ -73,7 +74,7 @@ public class SignIn extends HttpServlet {
 			{
 				session.setAttribute("type", "merchant");
 				session.setAttribute("merchantname", request.getParameter("Email"));
-				response.sendRedirect("html/Public/home.jsp");
+				response.sendRedirect("html/Merchant/account.jsp");
 			}
 			else {
 //				RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");
@@ -82,6 +83,7 @@ public class SignIn extends HttpServlet {
 //				System.out.println("was here");
 //				out.print("ftghujiok");
 //				rd.include(request, response);
+				System.out.println("user not recognised");
 				response.sendRedirect("html/Public/signIn.jsp");
 			}
 		}

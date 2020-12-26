@@ -37,9 +37,11 @@ public class ProductDelete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(request.getParameter("ProductId"));
 		ProductOperations proope=new ProductOperations();
 		System.out.println("Going to be deleted");
 		proope.deleteProduct(request.getParameter("ProductId"));
+		response.sendRedirect("html/Merchant/account.jsp");
 	}
 
 }
