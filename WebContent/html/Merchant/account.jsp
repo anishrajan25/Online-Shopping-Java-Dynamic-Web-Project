@@ -19,61 +19,198 @@
     }
     .nav-item .nav-link {
     	color: #000
-    }
+	}
+	/* #main {
+		background-color: rgba(154, 154, 154, 0.3);
+	} */
+	#addProduct input, textarea,
+	#deleteProduct input,
+	#updateProduct input{
+		width: 85%;
+		border: none;
+		padding: 15px 20px;
+		border-radius: 25px;
+		background: rgba(87, 87, 87, 0.1)
+	}
+	#addProduct label,
+	#updateProduct label,
+	#deleteProduct label {
+		font-size: large;
+	}
+	#addProduct input[type="submit"],
+	#deleteProduct input[type="submit"],
+	#updateProduct input[type="submit"] {
+		width: auto;
+		background: rgb(39, 38, 38);
+		color: white;
+	}
+	::placeholder {
+		color: #8f8c8c
+	}
 </style>
 
 <body>
 	<%@ include file="../Public/header.jsp" %>
 	
-	<div class="container mt-3">
+	<div class="container my-3" id="main">
 		<!-- Nav pills -->
 		<ul class="nav nav-pills" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link active" data-toggle="pill" href="#info">My Information</a>
+				<a class="nav-link active" data-toggle="pill" href="#outline-primary">My Information</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-toggle="pill" href="#add">Add Products</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="pill" href="#delete">Delete Products</a>
+				<a class="nav-link" data-toggle="pill" href="#delete">Delete Product</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="pill" href="#update">Update Products</a>
 			</li>
 		</ul>
 		  
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div id="info" class="container tab-pane active"><br>
+			<div id="outline-primary" class="container tab-pane active"><br>
 				<h3>My Information</h3>
 				<p>Welcome <%= name %></p>
 			</div>
 			<div id="add" class="container tab-pane fade"><br>
 				<h3>Add a New Product</h3>
-				<form action="ProductAdd" enctype="multipart/form-data" method="post">	
-					<label>Product Name</label>
-					<input type="text" name="ProductName"><br>
-					
-					<label>Product Id</label>
-					<input type="text" name="ProductId"><br>
-					
-					<label>Merchant Name</label>
-					<input type="text" name="MerchantName"><br>
-					
-					<label>Product Description</label>
-					<input type="text" name="ProductDescription"><br>
-					
-					<label>Product Price</label>
-					<input type="number" name="ProductPrice"><br>
-					
-					<label>Product Image</label>
-					<input type="file" name="ProductImage"><br>
-					
-					<input type="submit" value="Add">
+				<hr>
+				<form action="ProductAdd" id="addProduct" enctype="multipart/form-data" method="post">
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="name">Product Name</label>
+						</div>
+						<div class="col-md-6">
+							<input id="name" type="text" name="ProductName" placeholder="Product Name" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center ">
+						<div class="col-md-6">
+							<label for="pid">Product Id</label>
+						</div>
+						<div class="col-md-6">
+							<input id="pid" type="text" name="ProductId" placeholder="Product Id" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center ">
+						<div class="col-md-6">
+							<label for="mName">Merchant Name</label>
+						</div>
+						<div class="col-md-6">
+							<input id="mName" type="text" name="MerchantName" placeholder="Merchant Name" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="description">Product Description</label>
+						</div>
+						<div class="col-md-6">
+							<textarea maxlength="100" rows="5" cols="25" id="description" placeholder="Description..." name="ProductDescription" required></textarea>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="price">Product Price</label>
+						</div>
+						<div class="col-md-6">
+							<input id="price" min="0.00" max="10000000" step="0.01" type="number" name="ProductPrice" placeholder="499.99" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="quantity">Updated Quantity</label>
+						</div>
+						<div class="col-md-6">
+							<input id="quantity" min="0" max="1000000" step="1" type="number" name="ProductQuantity" placeholder="100" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="img">Product Image</label>
+						</div>
+						<div class="col-md-6">
+							<input id="img" type="file" name="ProductImage" required><br>
+							<input type="file" id="img2" class="mt-1" name="ProductImage2"><br>
+							<input type="file" id="img3" class="mt-1" name="ProductImage3"><br>
+							<p type="menu" style="border-radius: 25px;" class="btn btn-outline-primary mt-1 disabled">Add one more image</p>
+						</div>
+					</div>
+					<div class="row px-auto py-1 mt-3 mx-auto">
+						<div class="col-12">
+							<center><input type="submit" value="Add to Inventory"></center>
+						</div>
+					</div>
 				</form>
 			</div>
 			<div id="delete" class="container tab-pane fade"><br>
 				<h3>Delete a Product</h3>
+				<hr/>
+				<form action="ProductDelete" id="deleteProduct" enctype="multipart/form-data" method="post">
+					<div class="row py-1 align-items-center ">
+						<div class="col-md-6">
+							<label for="pid">Product Id</label>
+						</div>
+						<div class="col-md-6">
+							<input id="pid" type="text" name="ProductId" placeholder="Product Id" required>
+						</div>
+					</div>
+					<div class="row px-auto py-1 mt-3 mx-auto">
+						<div class="col-12">
+							<center><input type="submit" value="Delete from Inventory"></center>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="update" class="container tab-pane fade"><br>
+				<h3>Update a Product</h3>
+				<hr/>
+				<form action="ProductUpdate" id="updateProduct" enctype="multipart/form-data" method="post">
+					<div class="row py-1 align-items-center ">
+						<div class="col-md-6">
+							<label for="pid">Product Id</label>
+						</div>
+						<div class="col-md-6">
+							<input id="pid" type="text" name="ProductId" placeholder="Product Id" required>
+						</div>
+					</div>
+					<div class="row py-1 align-items-center">
+						<div class="col-md-6">
+							<label for="quantity">Updated Quantity</label>
+						</div>
+						<div class="col-md-6">
+							<input id="quantity" min="0" max="1000000" step="1" type="number" name="ProductQuantity" placeholder="100" required>
+						</div>
+					</div>
+					<div class="row px-auto py-1 mt-3 mx-auto">
+						<div class="col-12">
+							<center><input type="submit" value="Update Inventory"></center>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 	<%@ include file="../Public/footer.jsp" %>
 </body>
+<script>
+	$(document).ready(function() {
+		$("#img2").hide();
+		$("#img3").hide();
+		var i = 0;
+		$(".btn-outline-primary").click(function() {
+			if(i === 0) {
+				$("#img2").slideDown();
+			}
+			else if(i == 1) {
+				$("#img3").slideDown();
+				$(".btn-outline-primary").attr("disabled", true);
+			}
+			i = i + 1;
+			console.log(i);
+		});
+	});
+</script>
 </html>
