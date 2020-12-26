@@ -18,6 +18,7 @@ public class DataBaseDelete {
 		{
 			ps = con.prepareStatement("DELETE FROM  PRODUCT_FOR_SHOPPINGPROJECT WHERE PRODUCTID=?");
 			ps.setString(1, id);
+			ps.executeUpdate();
 			ps=con.prepareStatement("DELETE FROM  CART_FOR_SHOPPINGPROJECT WHERE PRODUCTID=?");
 			ps.setString(1,id);
 			count=ps.executeUpdate();

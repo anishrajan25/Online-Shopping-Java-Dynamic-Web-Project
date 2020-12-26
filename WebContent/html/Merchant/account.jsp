@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ page import="com.onlineStore.bean.Product,com.onlineStore.util.DBUtil,java.io.InputStream,java.sql.Connection,java.sql.PreparedStatement,java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,18 +71,31 @@
 		</ul>
 		  
 		<!-- Tab panes -->
+		<%
+		String merchantname=(String)session.getAttribute("merchantname");
+		Connection con=DBUtil.getConnection();
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM SELLER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
+		ps.setString(1,merchantname);
+		ResultSet rs=ps.executeQuery();
+		rs.next();
+		%>
 		<div class="tab-content">
 			<div id="outline-primary" class="container tab-pane active"><br>
 				<h3>My Information</h3>
-				<p>Welcome <%= name %></p>
+				<h6>Name <%= " : "+rs.getString(1)+" "+rs.getString(2) %></h6>
+				<h6>PhoneNo <%= " : "+rs.getLong(4) %></h6>
+				<h6>Address <%= " : "+rs.getString(5) %></h6>
+				<h6>Aadhar Number <%= " : "+rs.getLong(7) %></h6>
+				<img src="/Online_Shopping_Web/MerchantDisplay?username=<%= rs.getString(3) %>">
+				
 			</div>
 			<div id="add" class="container tab-pane fade"><br>
 				<h3>Add a New Product</h3>
 				<hr>
-				<form action="ProductAdd" id="addProduct" enctype="multipart/form-data" method="post">
+				<form action="/Online_Shopping_Web/ProductAdd" id="addProduct" enctype="multipart/form-data" method="post">
 					<div class="row py-1 align-items-center">
 						<div class="col-md-6">
-							<label for="name">Product Name</label>
+							<label for="name" >Product Name</label>
 						</div>
 						<div class="col-md-6">
 							<input id="name" type="text" name="ProductName" placeholder="Product Name" required>
@@ -95,14 +109,14 @@
 							<input id="pid" type="text" name="ProductId" placeholder="Product Id" required>
 						</div>
 					</div>
-					<div class="row py-1 align-items-center ">
+					<!--  <div class="row py-1 align-items-center ">
 						<div class="col-md-6">
 							<label for="mName">Merchant Name</label>
 						</div>
 						<div class="col-md-6">
 							<input id="mName" type="text" name="MerchantName" placeholder="Merchant Name" required>
 						</div>
-					</div>
+					</div>-->
 					<div class="row py-1 align-items-center">
 						<div class="col-md-6">
 							<label for="description">Product Description</label>
@@ -148,7 +162,7 @@
 			<div id="delete" class="container tab-pane fade"><br>
 				<h3>Delete a Product</h3>
 				<hr/>
-				<form action="ProductDelete" id="deleteProduct" enctype="multipart/form-data" method="post">
+				<form action="/Online_Shopping_Web/ProductDelete" id="deleteProduct" method="post">
 					<div class="row py-1 align-items-center ">
 						<div class="col-md-6">
 							<label for="pid">Product Id</label>
@@ -167,7 +181,7 @@
 			<div id="update" class="container tab-pane fade"><br>
 				<h3>Update a Product</h3>
 				<hr/>
-				<form action="ProductUpdate" id="updateProduct" enctype="multipart/form-data" method="post">
+				<form action="/Online_Shopping_Web/ProductUpdate" id="updateProduct"  method="post">
 					<div class="row py-1 align-items-center ">
 						<div class="col-md-6">
 							<label for="pid">Product Id</label>

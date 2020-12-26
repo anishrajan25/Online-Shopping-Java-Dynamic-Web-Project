@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.onlineStore.bean.Consumer;
 import com.onlineStore.bean.Merchant;
@@ -43,12 +44,16 @@ public class SignUp extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println(true);
+		HttpSession session = request.getSession();
 	if(request.getParameter("status").equals("3"))
 	{
 		Consumer consumer=new Consumer(request.getParameter("FirstName"),request.getParameter("LastName"),request.getParameter("Email"),request.getParameter("Passwd"),request.getParameter("Address"),Integer.valueOf(request.getParameter("status")),Long.valueOf(request.getParameter("MobileNumber")));
 		System.out.println("consumer object saved");
 		ConsumerOperations conope=new ConsumerOperations();
 		conope.addConsumer(consumer);
+		session.setAttribute("type", "consumer");
+		session.setAttribute("consumername", request.getParameter("Email"));
+		response.sendRedirect("html/Public/DemoHead.jsp");
 		//System.out.println(request.getParameter("FirstName")+" "+request.getParameter("LastName")+" "+request.getParameter("MobileNumber")+" "+request.getParameter("Address")+" "+request.getParameter("Email")+" "+request.getParameter("Passwd")+" "+request.getParameter("status"));
 	}
 	else
@@ -58,6 +63,9 @@ public class SignUp extends HttpServlet {
 	System.out.println("merchant object created");
 	MerchantOperations merop=new MerchantOperations();
 	merop.addMerchant(merchant);
+	session.setAttribute("type", "merchant");
+	session.setAttribute("merchantname", request.getParameter("Email"));
+	response.sendRedirect("html/Merchant/account.jsp");
 	}
 	}
 
