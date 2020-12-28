@@ -73,6 +73,7 @@
 		<!-- Tab panes -->
 		<%
 		String merchantname=(String)session.getAttribute("name");
+		System.out.println(merchantname);
 		Connection con=DBUtil.getConnection();
 		PreparedStatement ps=con.prepareStatement("SELECT * FROM SELLER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
 		ps.setString(1,merchantname);
