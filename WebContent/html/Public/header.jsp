@@ -39,7 +39,7 @@
             <% if(name.equals("")) {
                 %>
                 <li class="nav-item active">
-                    <a class="nav-link" href="./signIn.jsp">Sign In</a>
+                    <a class="nav-link" href="../Public/signIn.jsp">Sign In</a>
                 </li>
             <% } %>
             <% if(!name.equals("")) {

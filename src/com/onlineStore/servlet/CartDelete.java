@@ -39,7 +39,7 @@ public class CartDelete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session=request.getSession(false);
-		String t=(String) session.getAttribute("consumername");
+		String t=(String) session.getAttribute("name");
 		ProductOperations proope=new ProductOperations();
 		proope.deleteFromCart(t,request.getParameter("id"));
 		response.sendRedirect("/Online_Shopping_Web/html/Public/CartDisplay.jsp");

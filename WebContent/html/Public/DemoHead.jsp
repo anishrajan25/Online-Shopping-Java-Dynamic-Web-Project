@@ -21,7 +21,7 @@
 <body>
 <div id="ProductPage">
     <%@ include file="header.jsp" %>
-    <% String username=(String)(request.getSession(false)).getAttribute("consumername"); %>
+    <% String username=(String)(request.getSession(false)).getAttribute("name"); %>
     <h1>Product Display Page </h1>
     <%--<%
     response.setContentType("image/jpeg");

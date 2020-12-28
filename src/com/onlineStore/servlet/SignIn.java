@@ -49,13 +49,18 @@ public class SignIn extends HttpServlet {
 		if(email.equals("abc@xyz.com")) {
 			if(pass.equals("java")) {
 				session.setAttribute("type", "consumer");
-				session.setAttribute("consumername", request.getParameter("Email"));
+				session.setAttribute("name", request.getParameter("Email"));
 				response.sendRedirect("html/Public/DemoHead.jsp");
 			}
 			else if(pass.equals("jsp")) {
 				session.setAttribute("type", "merchant");
-				session.setAttribute("merchantname", request.getParameter("Email"));
+				session.setAttribute("name", request.getParameter("Email"));
 				response.sendRedirect("html/Merchant/account.jsp");
+			}
+			else if(pass.equals("admin")) {
+				session.setAttribute("type", "admin");
+				session.setAttribute("name", "Admin");
+				response.sendRedirect("html/Public/home.jsp");
 			}
 			else {
 				response.sendRedirect("html/Public/signIn.jsp");
@@ -67,13 +72,13 @@ public class SignIn extends HttpServlet {
 			if(conope.verifyConsumer(email,pass))
 			{
 				session.setAttribute("type", "consumer");
-				session.setAttribute("consumername", request.getParameter("Email"));
+				session.setAttribute("name", request.getParameter("Email"));
 				response.sendRedirect("html/Public/DemoHead.jsp");
 			}
 			else if(merope.verifyMerchant(email,pass))
 			{
 				session.setAttribute("type", "merchant");
-				session.setAttribute("merchantname", request.getParameter("Email"));
+				session.setAttribute("name", request.getParameter("Email"));
 				response.sendRedirect("html/Merchant/account.jsp");
 			}
 			else {
