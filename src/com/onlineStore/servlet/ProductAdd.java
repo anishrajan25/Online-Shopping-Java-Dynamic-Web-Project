@@ -42,7 +42,7 @@ public class ProductAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 				HttpSession session=request.getSession();
-				String merchantname=(String)session.getAttribute("merchantname");
+				String merchantname=(String)session.getAttribute("name");
 				Product product=new Product(request.getParameter("ProductName"),request.getParameter("ProductId"),merchantname,request.getParameter("ProductDescription"),Integer.valueOf(request.getParameter("ProductPrice")),request.getPart("ProductImage"),Integer.valueOf(request.getParameter("ProductQuantity")));
 				System.out.println("Product Object Created");
 				ProductOperations proope=new ProductOperations();

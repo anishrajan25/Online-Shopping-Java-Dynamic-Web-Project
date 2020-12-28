@@ -21,7 +21,7 @@
 <body>
 <div id="ProductPage">
     <%@ include file="header.jsp" %>
-    <% String username=(String)(request.getSession(false)).getAttribute("consumername"); %>
+    <% String username=(String)(request.getSession(false)).getAttribute("name"); %>
     <h1>Cart Display Page</h1>
     <%--<%
     response.setContentType("image/jpeg");
@@ -31,7 +31,7 @@
 	 System.out.println("verified");
 	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","demodbjava","parteek@1234");
 	PreparedStatement ps=con.prepareStatement("SELECT * FROM CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=?");
-	String t=(String) session.getAttribute("consumername");
+	String t=(String) session.getAttribute("name");
 	ps.setString(1,t);
 	ResultSet rs=ps.executeQuery();
     %>

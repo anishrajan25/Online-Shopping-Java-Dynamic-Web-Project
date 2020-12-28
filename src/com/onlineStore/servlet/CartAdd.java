@@ -43,7 +43,7 @@ public class CartAdd extends HttpServlet {
 		System.out.println("Cart add");
 		ProductOperations proope=new ProductOperations();
 		HttpSession session=request.getSession(false);
-		String t=(String) session.getAttribute("consumername");
+		String t=(String) session.getAttribute("name");
 		proope.addToCart(t,request.getParameter("id"));
 		System.out.println("/html/Public/productDescription.jsp?id="+request.getParameter("id"));
 //		RequestDispatcher rd=request.getRequestDispatcher("/html/Public/productDescription.jsp?id="+request.getParameter("id"));

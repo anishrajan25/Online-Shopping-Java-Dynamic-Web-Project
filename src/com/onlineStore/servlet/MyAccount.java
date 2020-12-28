@@ -35,6 +35,9 @@ public class MyAccount extends HttpServlet {
 		else if(type.equals("merchant")) {
 			response.sendRedirect("html/Merchant/account.jsp");
 		}
+		else {
+			response.sendRedirect("html/Admin/account.jsp");
+		}
 	}
 
 	/**

@@ -52,7 +52,7 @@ public class SignUp extends HttpServlet {
 		ConsumerOperations conope=new ConsumerOperations();
 		conope.addConsumer(consumer);
 		session.setAttribute("type", "consumer");
-		session.setAttribute("consumername", request.getParameter("Email"));
+		session.setAttribute("name", request.getParameter("Email"));
 		response.sendRedirect("html/Public/DemoHead.jsp");
 		//System.out.println(request.getParameter("FirstName")+" "+request.getParameter("LastName")+" "+request.getParameter("MobileNumber")+" "+request.getParameter("Address")+" "+request.getParameter("Email")+" "+request.getParameter("Passwd")+" "+request.getParameter("status"));
 	}
@@ -64,7 +64,7 @@ public class SignUp extends HttpServlet {
 	MerchantOperations merop=new MerchantOperations();
 	merop.addMerchant(merchant);
 	session.setAttribute("type", "merchant");
-	session.setAttribute("merchantname", request.getParameter("Email"));
+	session.setAttribute("name", request.getParameter("Email"));
 	response.sendRedirect("html/Merchant/account.jsp");
 	}
 	}
