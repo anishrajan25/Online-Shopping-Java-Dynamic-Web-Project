@@ -29,7 +29,8 @@ public class MerchantDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request,response);
+		
 	}
 
 	/**
@@ -39,6 +40,7 @@ public class MerchantDelete extends HttpServlet {
 		// TODO Auto-generated method stub
 		MerchantOperations merope=new MerchantOperations();
 		merope.deleteMerchant(request.getParameter("UserId"));
+		response.sendRedirect("/Online_Shopping_Web/html/Admin/account.jsp");
 	}
 
 }

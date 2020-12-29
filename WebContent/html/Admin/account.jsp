@@ -104,7 +104,7 @@
                                     <td><%= rs.getString(5) %></td>
                                     <td><%= rs.getString(7) %></td>
                                     <td><img src="/Online_Shopping_Web/MerchantDisplay?username=<%= rs.getString(3) %>"></td>
-                                    <th><a target="_blank" href="/Online_Shopping_Web/html/Merchant/account.jsp?name=<%= rs.getString(3) %>" >View More</a></th>
+                                    <th><a href="/Online_Shopping_Web/html/Admin/merchantInfo.jsp?name=<%= rs.getString(3) %>" >View More</a></th>
                                     </tr>
                                     <% }%>
                         </tbody>
@@ -128,7 +128,7 @@
                         <tbody>
                         <%
                 		PreparedStatement ps2=con.prepareStatement("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT");
-                    	ResultSet rs2=ps.executeQuery();
+                    	ResultSet rs2=ps2.executeQuery();
                         %>
  <%
                                 i = 1;
@@ -139,6 +139,7 @@
                                     <td><%= rs2.getString(3) %></td>
                                     <td><%= rs2.getString(4) %></td>
                                     <td><%= rs2.getString(5) %></td>
+                                    <th><a href="/Online_Shopping_Web/html/Admin/consumerInfo.jsp?name=<%= rs2.getString(3) %>" >View More</a></th>
                                 </tr>
                                 <% }
                             %>
