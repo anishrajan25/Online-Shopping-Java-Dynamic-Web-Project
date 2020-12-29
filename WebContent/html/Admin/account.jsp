@@ -84,7 +84,6 @@
                             <th scope="col">Phone No.</th>
                             <th scope="col">Address</th>
                             <th scope="col">Aadhar Number</th>
-                            <th scope="col">Image</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -96,17 +95,15 @@
  <%
                                 int i = 1;
                                 while(rs.next()) { %>
-                                <tr>
-                                    <th scope="row"><%= i++ %></th>
-                                    <td><%= rs.getString(1)+" "+rs.getString(2) %></td>
-                                    <td><%= rs.getString(3) %></td>
-                                    <td><%= rs.getString(4) %></td>
-                                    <td><%= rs.getString(5) %></td>
-                                    <td><%= rs.getString(7) %></td>
-                                    <td><img src="/Online_Shopping_Web/MerchantDisplay?username=<%= rs.getString(3) %>"></td>
-                                    <th><a href="/Online_Shopping_Web/html/Admin/merchantInfo.jsp?name=<%= rs.getString(3) %>" >View More</a></th>
+	                                <tr>
+	                                    <th scope="row"><%= i++ %></th>
+	                                    <td><a href="/Online_Shopping_Web/html/Admin/merchantInfo.jsp?name=<%= rs.getString(3) %>" style="text-decoration: none; color: black" ><%= rs.getString(1)+" "+rs.getString(2) %></a></td>
+	                                    <td><%= rs.getString(3) %></td>
+	                                    <td><%= rs.getString(4) %></td>
+	                                    <td><%= rs.getString(5) %></td>
+	                                    <td><%= rs.getString(7) %></td>
                                     </tr>
-                                    <% }%>
+                               	<% }%>
                         </tbody>
                       </table>
                 </div>
@@ -122,7 +119,8 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone No.</th>
-                            <th scope="col">Address</th>
+							<th scope="col">Address</th>
+							<th scope="col">Delete Account</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -138,8 +136,8 @@
                                     <td><%= rs2.getString(1)+" "+rs2.getString(2) %></td>
                                     <td><%= rs2.getString(3) %></td>
                                     <td><%= rs2.getString(4) %></td>
-                                    <td><%= rs2.getString(5) %></td>
-                                    <th><a href="/Online_Shopping_Web/html/Admin/consumerInfo.jsp?name=<%= rs2.getString(3) %>" >View More</a></th>
+									<td><%= rs2.getString(5) %></td>
+									<td><a class="text-danger" href="/Online_Shopping_Web/ConsumerDelete?UserId=<%= rs2.getString(3) %>">Delete</a></td>
                                 </tr>
                                 <% }
                             %>
