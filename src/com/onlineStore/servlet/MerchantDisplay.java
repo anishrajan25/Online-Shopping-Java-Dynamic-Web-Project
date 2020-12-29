@@ -39,7 +39,6 @@ public class MerchantDisplay extends HttpServlet {
 		// TODO Auto-generated method stub
 		Connection con=DBUtil.getConnection();
 		System.out.println("connection established");
-		System.out.println(request.getParameter("username"));
 			String username=request.getParameter("username");
 			System.out.println(username);
 			PreparedStatement ps;

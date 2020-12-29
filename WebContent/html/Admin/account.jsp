@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@ page import="com.onlineStore.bean.Product,com.onlineStore.util.DBUtil,java.io.InputStream,java.sql.Connection,java.sql.PreparedStatement,java.sql.ResultSet" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,21 +79,31 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone No.</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Aadhar Number</th>
                           </tr>
                         </thead>
                         <tbody>
-                        	<!-- <%
+                        <%
+                		Connection con=DBUtil.getConnection();
+                		PreparedStatement ps=con.prepareStatement("SELECT * FROM SELLER_FOR_SHOPPINGPROJECT");
+                    	ResultSet rs=ps.executeQuery();
+                        %>
+ <%
                                 int i = 1;
                                 while(rs.next()) { %>
-                                    <th scope="row"><%= i++ %></th>
-                                    <td><a target="_blank" href="/Online_Shopping_Web/ConsumerDisplay?id=<%= res.getString("id") %>"><%= %></a></td>
-                                    <td><%= %></td>
-                                    <td><%= %></td>
-                                <% }
-                            %> -->
+	                                <tr>
+	                                    <th scope="row"><%= i++ %></th>
+	                                    <td><a href="/Online_Shopping_Web/html/Admin/merchantInfo.jsp?name=<%= rs.getString(3) %>" style="text-decoration: none; color: black" ><%= rs.getString(1)+" "+rs.getString(2) %></a></td>
+	                                    <td><%= rs.getString(3) %></td>
+	                                    <td><%= rs.getString(4) %></td>
+	                                    <td><%= rs.getString(5) %></td>
+	                                    <td><%= rs.getString(7) %></td>
+                                    </tr>
+                               	<% }%>
                         </tbody>
                       </table>
                 </div>
@@ -104,21 +116,31 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone No.</th>
+							<th scope="col">Address</th>
+							<th scope="col">Delete Account</th>
                           </tr>
                         </thead>
                         <tbody>
-                        	<!-- <%
+                        <%
+                		PreparedStatement ps2=con.prepareStatement("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT");
+                    	ResultSet rs2=ps2.executeQuery();
+                        %>
+ <%
                                 i = 1;
-                                while(rs.next()) { %>
+                                while(rs2.next()) { %>
+                                <tr>
                                     <th scope="row"><%= i++ %></th>
-                                    <td><a target="_blank" href="/Online_Shopping_Web/ConsumerDisplay?id=<%= res.getString("id") %>"><%= %></a></td>
-                                    <td><%= %></td>
-                                    <td><%= %></td>
+                                    <td><%= rs2.getString(1)+" "+rs2.getString(2) %></td>
+                                    <td><%= rs2.getString(3) %></td>
+                                    <td><%= rs2.getString(4) %></td>
+									<td><%= rs2.getString(5) %></td>
+									<td><a class="text-danger" href="/Online_Shopping_Web/ConsumerDelete?UserId=<%= rs2.getString(3) %>">Delete</a></td>
+                                </tr>
                                 <% }
-                            %> -->
+                            %>
                         </tbody>
                       </table>
                 </div>
