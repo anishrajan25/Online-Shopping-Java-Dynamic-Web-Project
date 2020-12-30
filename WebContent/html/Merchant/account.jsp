@@ -83,13 +83,59 @@
 		<div class="tab-content">
 			<div id="outline-primary" class="container tab-pane active"><br>
 				<h3>My Information</h3>
-				<h6>Name <%= " : "+rs.getString(1)+" "+rs.getString(2) %></h6>
-				<h6>PhoneNo <%= " : "+rs.getLong(4) %></h6>
-				<h6>Address <%= " : "+rs.getString(5) %></h6>
-				<h6>Aadhar Number <%= " : "+rs.getLong(7) %></h6>
-				<img src="/Online_Shopping_Web/MerchantDisplay?username=<%= rs.getString(3) %>">
-				
+				<hr>
+				<div class="row my-3">
+					<div class="col-xs-12 col-md-6">
+						<img class="img-thumbnail" src="/Online_Shopping_Web/MerchantDisplay?username=<%= rs.getString(3) %>" alt="Merchant Picture">
+					</div>
+					<div class="col-xs-12 col-md-6 ">
+						<h4>Name: <%= rs.getString(1)+" "+rs.getString(2) %></h4>
+						<h4>Email: <%= rs.getString(3) %></h4>
+						<h4>PhoneNo: <%= rs.getLong(4) %></h4>
+						<h4>Address: <%= rs.getString(5) %></h4>
+						<h4>Aadhar Number: <%= rs.getLong(7) %></h4>
+					</div>
+				</div>
+				<%
+					ps=con.prepareStatement("SELECT * FROM PRODUCT_FOR_SHOPPINGPROJECT WHERE SELLERUSERNAME=?");
+					ps.setString(1,merchantname);
+					ResultSet rs2=ps.executeQuery();
+				%>
+				<div class="row mb-4">
+					<h3>My Products</h3>
+					<hr/>
+					<div class="col-12">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">PRODUCT NAME</th>
+									<th scope="col">PRODUCT ID</th>
+									<th scope="col">PRODUCT DESCRIPTION</th>
+									<th scope="col">PRODUCT PRICE</th>
+									<th scope="col">PRODUCT QUANTITY</th>
+								</tr>
+								</thead>
+								<tbody>
+									<% int i=0; 
+									while(rs2.next()){ %>
+										<tr>
+											<th scope="row"><%= ++i %></th>
+											<td><%= rs2.getString(1) %></td>
+											<td> <%= rs2.getString(2) %></td>
+											<td><%= rs2.getString(4) %></td>
+											<td><%= rs2.getString(5) %></td>
+											<td><%= rs2.getString(7) %></td>
+										</tr>
+										<% } %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
+
 			<div id="add" class="container tab-pane fade"><br>
 				<h3>Add a New Product</h3>
 				<hr>
@@ -136,7 +182,7 @@
 					</div>
 					<div class="row py-1 align-items-center">
 						<div class="col-md-6">
-							<label for="quantity">Updated Quantity</label>
+							<label for="quantity">Quantity</label>
 						</div>
 						<div class="col-md-6">
 							<input id="quantity" min="0" max="1000000" step="1" type="number" name="ProductQuantity" placeholder="100" required>

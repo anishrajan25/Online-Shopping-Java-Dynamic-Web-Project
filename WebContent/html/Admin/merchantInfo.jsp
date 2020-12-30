@@ -66,7 +66,7 @@
                         </thead>
                         <tbody>
                             <% int i=0; 
-                            while(rs.next()){ %>
+                            while(rs2.next()){ %>
                                 <tr>
                                     <th scope="row"><%= ++i %></th>
                                     <td><%= rs2.getString(1) %></td>

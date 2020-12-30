@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
+	<%@ page import="com.onlineStore.bean.Product,com.onlineStore.util.DBUtil,java.io.InputStream,java.sql.Connection,java.sql.PreparedStatement,java.sql.ResultSet" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,27 @@
 </head>
 <body>
 	<%@ include file="../Public/header.jsp" %>
-	Consumer
+	<%
+		Connection con=DBUtil.getConnection();
+		String n=name;
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
+		ps.setString(1,n);
+		System.out.println("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL="+n);
+		ResultSet rs=ps.executeQuery();
+		rs.next();
+	%>
+	<div class="container"my-4">
+		<h2>My Information </h4>
+		<hr/>
+		<div class="row my-5 justify-content-around">
+			<div class="col-xs-12 col-md-6 offset-sm-2">
+				<h3>Name: <%= rs.getString(1)+" "+rs.getString(2) %></h3>
+				<h3>Email: <%= rs.getString(3) %></h3>
+				<h3>PhoneNo: <%= rs.getLong(4) %></h3>
+				<h3>Address: <%= rs.getString(5) %></h3>
+			</div>
+		</div>
+	</div>
 	<%@ include file="../Public/footer.jsp" %>
 </body>
 </html>

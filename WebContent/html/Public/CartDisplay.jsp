@@ -8,9 +8,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Home</title>
+<title>Online Store</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../../css/signIn.css">
 		<link rel="stylesheet" href="../../css/Demo.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,25 +18,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<div id="ProductPage">
-    <%@ include file="header.jsp" %>
+  <%@ include file="header.jsp" %>
+  <div class="container py-4">
+  	<h2>My Cart</h2>
+    <hr>
+    <div id="ProductPage" class="row pt-2">
+    
     <% String username=(String)(request.getSession(false)).getAttribute("name"); %>
-    <h1>Cart Display Page</h1>
+    
     <%--<%
     response.setContentType("image/jpeg");
     %>--%>
     <%
-    Class.forName("oracle.jdbc.driver.OracleDriver");
-	 System.out.println("verified");
-	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","demodbjava","parteek@1234");
-	PreparedStatement ps=con.prepareStatement("SELECT * FROM CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=?");
-	String t=(String) session.getAttribute("name");
-	ps.setString(1,t);
-	ResultSet rs=ps.executeQuery();
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+      System.out.println("verified");
+      Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","demodbjava","parteek@1234");
+      PreparedStatement ps=con.prepareStatement("SELECT * FROM CART_FOR_SHOPPINGPROJECT WHERE CUSTOMERUSERNAME=?");
+      String t=(String) session.getAttribute("name");
+      ps.setString(1,t);
+      ResultSet rs=ps.executeQuery();
     %>
     <% while(rs.next()){  %>
     <% System.out.println(1);%>
     <%  String str=rs.getString(5);%>
+    
+    <div class="col-12 col-md-6 col-lg-4 my-3">
     <a href="productDescription.jsp?id=<%= rs.getString(2) %>"><div class="card card-custom bg-white border-white border-0">
           <div class="card-custom-img" style="background-image: url(/Online_Shopping_Web/CartDisplay?id=<%= rs.getString(2) %>);"></div>
           <div class="card-custom-avatar">
@@ -45,34 +50,21 @@
           </div>
           
           <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title"><%= rs.getString(1) %></h4>
-             <p class="card-text"><%= str %></p>
+            <h4 style="color: black;"  class="card-title"><%= rs.getString(1) %></h4>
+             <p style="color: black;"  class="card-text"><%= str %></p>
           </div>
           <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary"><%= rs.getInt(6) %></a>
-             <a href="#" class="btn btn-outline-primary"><%= str %></a>
+            <a href="productDescription.jsp?id=<%= rs.getString(2) %>" class="btn btn-primary">₹<%= rs.getInt(6) %></a>
+             <a href="/Online_Shopping_Web/CartDelete?id=<%= rs.getString(2) %>" class="btn btn-outline-danger">Delete From the Cart</a>
           </div>
-          <a href="/Online_Shopping_Web/CartDelete?id=<%= rs.getString(2) %>"><button>Delete From the Cart</button></a>
         </div>
         </a>
-    
-    
-    
-    
-    	<%-- <h1></h1>
-    	<h1><%= rs.getString(2) %></h1>
-    	<h1><%= rs.getString(3) %></h1>
-    	<h1></h1>
-    	<h1></h1>
-    	<% request.setAttribute("task","displayproduct"); %>
-    	<img width='300' height='300' src="/Online_Shopping_Web/ImageDisplay?id=<%= rs.getString(2) %>"  >
-    	<%-- <img width='300' height='300' src="/Online_Shopping_Web/ImageDisplay?id=<%= rs.getString(2) %>"  >
-    	<h1><%= rs.getInt(7) %></h1>--%>
-    	
+    	</div>
     	
     <%  }
-    %>
+    %></div>
+  </div>
     <%@ include file="footer.jsp" %>
-    </div>
+
 </body>
 </html>
