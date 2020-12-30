@@ -69,7 +69,22 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="outline-primary" class="container tab-pane active"><br>
-				<h3>My Information</h3>
+				<h2>My Information </h4>
+				<hr/>
+				<div class="row justify-content-center">
+					<div class="col-12">
+						<h3 class="my-2">Name: Anish Rajan / Parteek Adlakha</h3>
+						<h3 class="my-2">E-mail: anishrajan2708@gmail.com / ssparteek470@gmail.com</h3>
+						<h3 class="my-2">Phone Number: 7888823191 / 9050243219</h3>
+						<h3 class="mt-1" style="text-decoration: underline;">Address:</h3>
+						<address style="color: black; font-size: large;">
+							Plot No. 8055<br>
+							Rajiv Gandhi Technology Park<br>
+							Chandigarh<br>
+							India
+						</address>
+					</div>
+				</div>
 			</div>
 			<div id="merchants" class="container tab-pane fade"><br>
 				<h3>Merchants</h3>
@@ -92,7 +107,7 @@
                 		PreparedStatement ps=con.prepareStatement("SELECT * FROM SELLER_FOR_SHOPPINGPROJECT");
                     	ResultSet rs=ps.executeQuery();
                         %>
- <%
+							<%
                                 int i = 1;
                                 while(rs.next()) { %>
 	                                <tr>

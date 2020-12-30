@@ -55,12 +55,12 @@ public class SignIn extends HttpServlet {
 			else if(pass.equals("jsp")) {
 				session.setAttribute("type", "merchant");
 				session.setAttribute("name", request.getParameter("Email"));
-				response.sendRedirect("html/Merchant/account.jsp");
+				response.sendRedirect("html/Public/DemoHead.jsp");
 			}
-			else if(pass.equals("admin")) {
+			else if(pass.equals("master")) {
 				session.setAttribute("type", "admin");
 				session.setAttribute("name", "Admin");
-				response.sendRedirect("html/Public/home.jsp");
+				response.sendRedirect("html/Public/DemoHead.jsp");
 			}
 			else {
 				response.sendRedirect("html/Public/signIn.jsp");
@@ -79,7 +79,7 @@ public class SignIn extends HttpServlet {
 			{
 				session.setAttribute("type", "merchant");
 				session.setAttribute("name", request.getParameter("Email"));
-				response.sendRedirect("html/Merchant/account.jsp");
+				response.sendRedirect("html/Public/DemoHead.jsp");
 			}
 			else {
 //				RequestDispatcher rd = request.getRequestDispatcher("html/Public/signIn.jsp");

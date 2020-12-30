@@ -19,14 +19,14 @@
 	<%@ include file="../Public/header.jsp" %>
 	
 	<%
-    Connection con=DBUtil.getConnection();
-    String n=request.getParameter("name");
-    PreparedStatement ps=con.prepareStatement("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
-    ps.setString(1,n);
-    System.out.println("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL="+n);
-    ResultSet rs=ps.executeQuery();
-    rs.next();
-  %>
+        Connection con=DBUtil.getConnection();
+        String n=request.getParameter("name");
+        PreparedStatement ps=con.prepareStatement("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL=?");
+        ps.setString(1,n);
+        System.out.println("SELECT * FROM CUSTOMER_FOR_SHOPPINGPROJECT WHERE EMAIL="+n);
+        ResultSet rs=ps.executeQuery();
+        rs.next();
+    %>
   <div class="container">
     <div class="row my-5 justify-content-around">
         <div class="col-xs-12 col-md-6 offset-sm-2">
